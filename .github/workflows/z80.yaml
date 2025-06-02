@@ -16,7 +16,7 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
 
-    - name: Install
+    - name: Install assembler
       run: |
         wget https://github.com/AILight/AILZ80ASM/releases/download/v1.0.29/AILZ80ASM.linux-x64.v1.0.29.zip
         unzip AILZ80ASM.linux-x64.v1.0.29.zip
