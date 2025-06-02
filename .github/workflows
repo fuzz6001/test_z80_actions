@@ -1,1 +1,33 @@
+name: Z80 Assembly CI
 
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Install
+      run: |
+        wget https://github.com/AILight/AILZ80ASM/releases/download/v1.0.29/AILZ80ASM.linux-x64.v1.0.29.zip
+        unzip AILZ80ASM.linux-x64.v1.0.29.zip
+        sudo mv AILZ80ASM /usr/local/bin/
+
+    - name: Assemble
+      run: |
+        AILZ80ASM test.asm -o out.bin
+
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: z80-binary
+        path: out.bin
