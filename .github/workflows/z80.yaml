@@ -20,6 +20,7 @@ jobs:
       run: |
         wget https://github.com/AILight/AILZ80ASM/releases/download/v1.0.29/AILZ80ASM.linux-x64.v1.0.29.zip
         unzip AILZ80ASM.linux-x64.v1.0.29.zip
+        chmod +x AILZ80ASM
         sudo mv AILZ80ASM /usr/local/bin/
 
     - name: Assemble
